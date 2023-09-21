@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Fatura {
 
-    public String numero;
-    public String descricao;
-    int quantidade;
-    protected double preco;
+    private String numero;
+    private String descricao;
+    private int quantidade;
+    private double preco;
 
     Fatura(){}
 
@@ -43,11 +43,11 @@ public class Fatura {
         return descricao;
     }
 
-    public double getPreco() {
+    public int getPreco() {
         if(preco<0){
             return 0;
         } else {
-            return preco;
+            return (int) preco;
         }
     }
 
@@ -56,9 +56,6 @@ public class Fatura {
     }
 
     public double getTotalFatura(){
-        if(preco<0){
-            return 0;
-        }
         return quantidade * preco;
     }
 }
