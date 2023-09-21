@@ -56,6 +56,11 @@ public class Fatura {
     }
 
     public double getTotalFatura(){
-        return quantidade * preco;
+        if(preco<0){
+            return 0;
+        } else {
+            return quantidade * preco;
+        }
+
     }
 }
