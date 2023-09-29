@@ -1,5 +1,6 @@
 package AULAS;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Provas {
@@ -46,14 +47,15 @@ public class Provas {
         mediaFinal = P3/2+max/2;
         if (mediaFinal >=5 ){
             System.out.println("A média final foi: "+mediaFinal);
-            System.out.println("Aprovado");
+            System.out.println("Aprovado\n");
         } else {
             System.out.println("A média final foi: "+mediaFinal);
-            System.out.println("Reprovado");
+            System.out.println("Reprovado\n");
         }
 
     }
 
+    /*
     double testaMaior(double P1, double P2) {
         if (P1>P2){
             return  maior=this.P1;
@@ -61,22 +63,35 @@ public class Provas {
             return  maior=this.P2;
         }
     }
+    */
     void alunoSituacao(){
         if((this.media>=5) && (this.P1>3 && this.P2>3))
-            System.out.println("Aprovado!!!!");
+            System.out.println("Aprovado!!!!\n");
         else if (this.media>=3){
-            System.out.println("Está de final");
+            System.out.println("Está de final\n");
             setMediaFinal();
         } else {
-            System.out.println("Reprovado");
+            System.out.println("Reprovado\n");
         }
     }
 
     public static void main(String[] args) {
+
         Provas aluno = new Provas();
-        aluno.setNotas();
-        aluno.setMedia();
-        aluno.alunoSituacao();
+        try {
+            for(int rep=0;rep<=10;rep++) {
+                aluno.setNotas();
+                aluno.setMedia();
+                aluno.alunoSituacao();
+            }
+        } catch (InputMismatchException ex){
+           /* String msg = ex.getMessage();
+            System.out.println(msg);*/
+            System.out.println("\nVocê deve digitar apenas números");
+
+        } finally {
+            System.out.println("\nSaiu do programa");
+        }
     }
 
 }

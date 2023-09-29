@@ -43,11 +43,11 @@ public class Fatura {
         return descricao;
     }
 
-    public int getPreco() {
+    public double getPreco() {
         if(preco<0){
             return 0;
         } else {
-            return (int) preco;
+            return preco;
         }
     }
 
@@ -62,5 +62,13 @@ public class Fatura {
             return quantidade * preco;
         }
 
+    }
+
+    void getInfo(){
+        System.out.println("Descrição do produto: " + descricao);
+        System.out.println("Número do produto: " + numero);
+        System.out.println("Valor do produto: " + preco);
+        System.out.println("Quantidade do produto: " + quantidade);
+        System.out.println("Valor total da fatura: " + getTotalFatura() + " $$\n");
     }
 }
