@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class JogoDaSenha {
+public class JogoDaSenhaInicial {
 
     int[] vetor = new int[30];
     int[] palpites = new int[5];
@@ -150,7 +150,7 @@ public class JogoDaSenha {
     }
 
     public static void main(String[] args) {
-        JogoDaSenha teste = new JogoDaSenha();
+        JogoDaSenhaInicial teste = new JogoDaSenhaInicial();
         teste.criaVetor();
         //teste.getVetor();
         teste.fazerTentativa(98,36,27,78,0);

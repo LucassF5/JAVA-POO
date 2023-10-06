@@ -1,38 +1,21 @@
 package AULAS;
 
-import java.util.Random;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
-public class JogoDaSenhaInicial {
+public class JogoDaSenha {
 
     int[] vetor = new int[30];
     int[] palpites = new int[5];
-    //int[] coincidiu = new int[5];
     int t1, t2, t3, t4, t5, contador;
     int i=0; int j =0; int num=0;
     int contaTentativa=1;
     boolean acertou=false;
     String numsCoincididos;
     ArrayList<Integer> coincididos = new ArrayList<>();
-    /*List<Integer> novoArray = new ArrayList<>();*/
     Random random = new Random();
-
-    void testaVetor(){
-        for ( i = 0; i <= vetor.length; i++) {
-            for (j = i + 1; j < vetor.length; j++) {
-                int repetido = vetor[j];
-                if (vetor[i] == repetido) {
-                    //duplicatas.add(vetor[i]);
-                    vetor[i] = random.nextInt(1,101);
-                } else {
-                    //novoArray.add(vetor[i]);
-                    continue;
-                }
-            }
-        }//System.out.println("Duplicatas no array: " + duplicatas);
-    }
 
     void criaVetor(){
         for( num=0; num<vetor.length; num++){
@@ -42,6 +25,20 @@ public class JogoDaSenhaInicial {
         Arrays.sort(vetor);
         testaVetor();
     }
+
+    void testaVetor(){
+        for ( i = 0; i <= vetor.length; i++) {
+            for (j = i + 1; j < vetor.length; j++) {
+                int repetido = vetor[j];
+                if (vetor[i] == repetido) {
+                    vetor[i] = random.nextInt(1,101);
+                } else {
+                    continue;
+                }
+            }
+        }
+    }
+
 
     void getVetor() {
         for( num=0; num<vetor.length; num++){
@@ -83,21 +80,20 @@ public class JogoDaSenhaInicial {
                 if (palpites[i] == repetido) {
                     coincididos.add(repetido);
                     this.contador++;
-                    //vetor[i] = random.nextInt(1,101);
                 } else {
-                    //novoArray.add(vetor[i]);
                     continue;
                 }
             }
-        }//System.out.println("\nCoincididos no array: " + duplicatas);
+        }
     }
 
- /*   void getCoincididos(){
-         numsCoincididos="";
-        for (num = 0; num < coincididos.size(); num++) {
-            numsCoincididos += coincididos.get(num).toString();
-        }
-    }*/
+
+    void loop(int t1, int t2, int t3, int t4, int t5){
+        System.out.println("-------------------------------------------------------");
+        criaVetor();
+        fazerTentativa(t1, t2, t3, t4, t5);
+        getSenha();
+    }
 
     void loop(){
         System.out.println("-------------------------------------------------------");
@@ -121,8 +117,6 @@ public class JogoDaSenhaInicial {
         numsCoincididos = coincididos.toString();
         getContadorPesquisa();
         System.out.println("\nO valor de coincididos foi: "+contador+"\n");
-        //System.out.println("Tentativas: "+contaTentativa);
-        //System.out.println("Os coincididos foram: "+numsCoincididos);
         if(contador==5){
             contaTentativa=1;
             System.out.println("Coincididos no array: " + numsCoincididos);
@@ -150,83 +144,15 @@ public class JogoDaSenhaInicial {
     }
 
     public static void main(String[] args) {
-        JogoDaSenhaInicial teste = new JogoDaSenhaInicial();
+        JogoDaSenha teste = new JogoDaSenha();
+
         teste.criaVetor();
-        //teste.getVetor();
         teste.fazerTentativa(98,36,27,78,0);
-        //teste.testaPalpites();
-        //System.out.println("\nO valor de coincididos foi: "+teste.contador);
         teste.getSenha();
-        //teste.loop();
+
         teste.criaVetor();
         teste.fazerTentativa(34,67,86,92,95);
         teste.getSenha();
 
-
-    /*
-void testaRemover(){
-    // Converta o array em uma lista
-    List<Integer> lista = new ArrayList<>();
-    for (int elemento : vetor) {
-        lista.add(elemento);
-        }
-    for(int num=0; num<lista.size(); num++){
-        System.out.println("Posição número("+num+") => "+ lista.get(num));
-    }
-    }*/
-
-    /*void getDuplicatas(){
-        System.out.println("Duplicatas no array: " + duplicatas);
-    }*/
-
-// Remova o elemento da lista
-//  lista.remove(Integer.valueOf(duplicatas));
-
-// Converta a lista de volta para um novo array (opcional)
-//    Integer[] novoArray = lista.toArray(new Integer[0]);
-
-
-
-//    public void setVetor(int[] vetor) {
-//        this.vetor = vetor;
-//    }
-
-
-
-    /*void getNewVetor(){
-        for(int num=0; num<novoArray.size(); num++){
-            System.out.println("Posição número("+num+") => "+ novoArray.get(num));
-        }
-    }*/
-
-
-        //teste.testaVetor();
-        //teste.getNewVetor();
-
-        //teste.testaRemover();
-        //teste.getDuplicatas();
-        //teste.getVetor();
-        //teste.getVetor();
-
-
-
-//        Random random = new Random();
-//        Gerando números aleatórios -- Teste 1
-//        for(int num=0; num<10; num++){
-//            System.out.println(test.nextInt());
-//        }
-
-//        Gerando números aleatórios de 0 a 30-- Teste 2
-//        for(int num=0; num<10; num++){
-//            System.out.println(test.nextInt(30));
-//        }
-
-//        int array[] = new int[5]; // 5 números serão gerados
-//        for (int i=0; i<array.length; i++) {
-//            array[i] = 10 + random.nextInt(50); // Gera números aleatórios com limite 50.
-//            System.out.println(array[i]); // Saída, são gerados 5 números.
-//        }
-
     }
 }
-
