@@ -1,60 +1,63 @@
-package AULAS;
+//Aluno: Lucas Franco Rocha
+//Turma: B
+//Curso: ADS
 
 import java.util.Random;
+import java.util.Stack;
+import java.util.LinkedList;
 
 public class ShellSort {
-    public static void main(String[] args) {
-        int[] arr = {64, 34, 25, 12, 22, 11, 90};
 
-        System.out.println("Array original:");
-        printArray(arr);
 
-        shellSort(arr);
-
-        System.out.println("\nArray ordenado:");
-        printArray(arr);
-    }
-
-    int[] criaVetor(int numero) {
-        int[] vetor = new int[numero];
+    int[] criaVetor(int tamanho) {
+        int[] array = new int[tamanho];
         Random random = new Random();
-        for (int num = 0; num < vetor.length; num++) {
-            vetor[num] = random.nextInt(101); // Gera um número aleatório entre 0 e 100
+
+        for (int i = 0; i < tamanho; i++) {
+            array[i] = random.nextInt(100); // Gera números aleatórios entre 0 e 99
         }
-        return vetor;
+
+        return array;
     }
+
+    public Stack<Integer> criaPilha(int tamanho) {
+        Stack<Integer> pilha = new Stack<>();
+        Random random = new Random();
+
+        for (int i = 0; i < tamanho; i++) {
+            pilha.push(random.nextInt(100)); // Gera números aleatórios entre 0 e 99
+        }
+
+        return pilha;
+    }
+
+    public LinkedList<Integer> criaLista(int tamanho) {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        Random random = new Random();
+
+        for (int i = 0; i < tamanho; i++) {
+            linkedList.add(random.nextInt(100)); // Gera números aleatórios entre 0 e 99
+        }
+
+        return linkedList;
+    }
+
 
     static void shellSort(int arr[]) {
         int n = arr.length;
-        int ordena = 0;
-        int posicao = 0;
 
         for (int gap = n / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < n; i++) {
                 int temp = arr[i];
                 int j = i;
-//                System.out.println("Ordenaçao número " + ordena + " / gap número " + gap);
-//                System.out.println("Ordenaçao número " + ordena + " / gap número " + gap);
-//                printArray(arr);
-//                System.out.println("-----------------------");
-
 
                 while (j >= gap && arr[j - gap] > temp) {
-                    posicao = j;
                     arr[j] = arr[j - gap];
                     j -= gap;
-//                    ordena++;
-//                    System.out.println("Ordenaçao número " + ordena + " / gap número " + gap);
-//                    printArray(arr);
-//                    System.out.println("-----------------------");
                 }
-                System.out.println("Ordenaçao número " + ordena + " / trocado " + j + " / posição " + posicao);
-                printArray(arr);
-                System.out.println("-----------------------");
-                arr[j] = temp;
-                ordena++;
-            }
 
+                arr[j] = temp;
+            }
         }
     }
 
